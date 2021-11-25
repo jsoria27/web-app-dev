@@ -27,4 +27,6 @@ router.get('/register', loginController.displayRegisterPage);
 /* POST Route for processing the Register page */
 router.post('/register', loginController.processRegisterPage);
 
+router.get('/logout', loginController.performLogout);
+
 module.exports = router;
