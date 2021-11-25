@@ -22,7 +22,9 @@ module.exports.displayLoginPage = (req, res, next) => {
     {
         res.render('auth/login',
         {
-            title: "Login"
+            title: "Login",
+            messages: req.flash('loginMessage'),
+            displayName: req.user ? req.user.displayName: ''
         })
     }
     else{
@@ -53,4 +55,65 @@ module.exports.processLoginPage = (req, res, next) => {
             return res.redirect('/')
         });
     })(req, res, next);
+}
+
+module.exports.displayRegisterPage = (req, res, next) => {
+    //check if user is not already logged in
+    if(!req.user)
+    {
+        res.render('auth/register',
+        {
+            title: 'Register',
+            messages: req.flash('registerMessage'),
+            displayName: req.user ? req.user.displayName : ''
+        });
+    }
+    else
+    {
+        return res.redirect('/');
+    }
+}
+
+module.exports.processRegisterPage = (req, res, next) => {
+    //instantiate a user object
+    let newUser = new User({
+        username: req.body.username,
+        password: req.body.password,
+        email: req.body.email,
+        displayName: req.body.displayName
+    });
+
+    User.register(newUser, req.body.password, (err) => {
+        if(err)
+        {
+            console.log("Error: inserting new user");
+            if(err.name == "UserExistsError")
+            {
+                req.flash(
+                    'registerMessage',
+                    'Registration Error: User already exists!'
+                );
+                console.log('Error: User already exists')
+            }
+            return res.render('auth/register',
+            {
+                title: 'Register',
+                messages: req.flash('registerMessage'),
+                displayName: req.user ? req.user.displayName : ''
+            });
+        }
+        else
+        {
+            //if no error exists, then register is successful
+            //redirect user and authenticate them
+            return passport.authenticate('local')(req, res, () => {
+                res.redirect('/')
+            });
+        }
+    });
+}
+
+module.exports.performLogout = (req, res, next) => {
+    req.logout();
+    res.redirect('/');
 }

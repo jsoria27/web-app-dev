@@ -21,4 +21,10 @@ router.get('/', loginController.displayLoginPage);
 /*POST route for processing the login page */
 router.post('/', loginController.processLoginPage);
 
+/* GET Route for displaying the Register page */
+router.get('/register', loginController.displayRegisterPage);
+
+/* POST Route for processing the Register page */
+router.post('/register', loginController.processRegisterPage);
+
 module.exports = router;
