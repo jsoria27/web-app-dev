@@ -1,0 +1,54 @@
+    <!--
+  Sierra Surveys Web Application 
+  - A simple Web Application to mimic a survey creating/taking website
+
+  Daniyal Ahmed - 301152472
+  Soham Rajput - 301180583
+  Joshua Soriano - 301154852
+  Parth Shah - 301171805
+  Mohamed Soliman - 301219444
+  -->  
+  
+  
+  <!--Main Navigation-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">Sierra Surveys</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav position-absolute end-0 ml-auto mb-2 mb-lg-0">
+
+          <li class="nav-item">
+            <% if (title == "Home"){ %>
+            <a class="nav-link active">
+            <% } else { %>
+            <a class="nav-link" href="/home">
+            <% } %>
+            <i class="fas fa-home"></i> Landing Page </a>
+          </li>
+
+          <li class="nav-item">
+            <% if (title == "Surveys"){ %>
+            <a class="nav-link active">
+            <% } else { %>
+            <a class="nav-link" href="/survey">
+            <% } %>
+            <i class="fas fa-book"></i> Surveys </a>
+          </li>
+
+          <li class="nav-item">
+            <% if (title == "Login"){ %>
+            <a class="nav-link active">
+            <% } else { %>
+            <a class="nav-link" href="/login">
+            <% } %>
+            <i class="fas fa-address-card"></i> Login </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>

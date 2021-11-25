@@ -1,0 +1,29 @@
+  <!--
+  Sierra Surveys Web Application 
+  - A simple Web Application to mimic a survey creating/taking website
+
+  Daniyal Ahmed - 301152472
+  Soham Rajput - 301180583
+  Joshua Soriano - 301154852
+  Parth Shah - 301171805
+  Mohamed Soliman - 301219444
+  -->
+
+
+<%- include partials/header.ejs %>
+
+<%- include partials/main_nav.ejs %>
+
+  <!--Main Content-->
+  <div class="col-md-6">
+    <div class="h-100 p-5 text-black bg-light">
+      <h1>Welcome to the <%= title %> page !</h1>
+    </div>
+    <img src="assets/images/logo.jpg">
+  </div>
+  <a href="/survey" class="btn btn-primary" role="button">
+    <i class="fas fa-plus-circle"></i> View Surveys </a>
+
+<%- include partials/bottom_nav.ejs %>
+
+<%- include partials/footer.ejs %>

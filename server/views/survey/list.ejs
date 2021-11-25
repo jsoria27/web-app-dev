@@ -1,0 +1,67 @@
+  <!--
+  Sierra Surveys Web Application 
+  - A simple Web Application to mimic a survey creating/taking website
+
+  Daniyal Ahmed - 301152472
+  Soham Rajput - 301180583
+  Joshua Soriano - 301154852
+  Parth Shah - 301171805
+  Mohamed Soliman - 301219444
+  ->
+
+
+<%- include ../partials/header.ejs %>
+
+<%- include ../partials/main_nav.ejs %>
+  <!--Main Content-->
+<main class="container">
+<div class="row">
+    <div class="offset-md-1 col-md-11">
+        <h1><%= title %></h1>
+
+        <a href="survey/add" class="btn btn-primary" role="button">
+            <i class="fas fa-plus-circle"></i> Add a Survey 
+        </a>
+        <br>
+        <table class="table table-bordered table-striped table-hover">
+            <!-- Header Row -->
+            <tr>
+                <th class="text-center col-1">Title</th>
+                <th class="text-center col-2">Ques 1</th>
+                <th class="text-center col-2">Ans 1</th>
+                <th class="text-center col-2">Ques 2</th>
+                <th class="text-center col-2">Ans 2</th>
+                <th class="text-center col-2">Ques 3</th>
+                <th class="text-center col-2">Ans 3</th>
+                <th class="text-center col-1"></th>
+                <th class="text-center col-1"></th>
+            </tr>
+
+            <!-- Repeatable Template Row -->
+
+            <% for(let count = 0; count < SurveyList.length; count++){ %>
+                <tr>
+                    <td class="text-center col-1"><%= SurveyList[count].name %></td>
+                    <td class="text-center col-2"><%= SurveyList[count].question1 %></td>
+                    <td class="text-center col-2"><%= SurveyList[count].answer1 %></td>
+                    <td class="text-center col-2"><%= SurveyList[count].question2 %></td>
+                    <td class="text-center col-2"><%= SurveyList[count].answer2 %></td>
+                    <td class="text-center col-2"><%= SurveyList[count].question3 %></td>
+                    <td class="text-center col-2"><%= SurveyList[count].answer3 %></td>
+                    <td class="text-center col-1">
+                        <a href="/survey/edit/<%= SurveyList[count]._id %>" class="btn btn-primary btn-sm">
+                        <i class="fas fa-pen"> Edit </i></a>
+                    </td>
+                    <td class="text-center col-1">
+                        <a href="/survey/delete/<%= SurveyList[count]._id %>" class="btn btn-danger btn-sm">
+                        <i class="fas fa-trash-alt"> Delete </i></a>
+                    </td>
+                </tr>
+            <% } %>
+        </table>
+    </div>
+</div>
+</main>
+<%- include ../partials/bottom_nav.ejs %>
+
+<%- include ../partials/footer.ejs %>
